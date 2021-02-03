@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4"><i class="fa fa-sun-o"></i> Weather Dashboard</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-12 col-lg-3" id="searchCol">
+                <!-- SEARCH FORM -->
+                <form class="form-group" autocomplete="off">
+                    <row class="row justify-content-center">
+                        <label for="city-search-input" class="search-city">Search for a City</label>
+                    </row>
+                    <row class="row form-inline">
+                        <input type="text" class="col-10 form-control" id="city-search-input" input list="cities" />
+                        <datalist id="cities"></datalist>
+                        <button type="submit" class="col-2 btn searchBtn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </row>
+                </form>
+                <row class="row">
+                    <div class="col justify-content-center city-buttons"></div>
+                </row>
+            </aside>
+            <section class="col-md-12 col-lg-9" id="weatherCol">
+                <row class="row mb-3 justify-content-center">
+                    <p id="current-date"></p>
+                </row>
+                <row class="row" id="city-info">
