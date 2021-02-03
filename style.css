@@ -1,0 +1,45 @@
+h1 {
+    font-weight: 500;
+}
+
+.jumbotron {
+    background-image: url("images/pinkclouds.jpg");
+    background-size: cover;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.display-4 {
+    font-family: 'Staatliches', cursive;
+    font-size: 100px;
+}
+
+.fa-sun-o {
+    color:white;
+}
+
+.container {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+}
+
+.row {
+    margin: auto;
+}
+
+.search-city {
+    font-size: 20px;
+}
+
+.searchBtn {
+    background-color: rgb(240, 18, 122);
+    color: white;
+}
+
+.searchBtn:hover {
+    background-color: #570735;
+    color: white;
+}
+
+
