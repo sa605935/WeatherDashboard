@@ -47,7 +47,7 @@ function chooseCity () {
 
 function getCurrentWeather() {
     if (cityName) {
-        var apiKey = "96e27da4f61bebe5c6e5c7c18c453252";
+        var apiKey ="99042600fe617d846000c500acac8302";
         var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
         $.ajax({
             url: queryUrl,
@@ -60,7 +60,7 @@ function getCurrentWeather() {
 }
 
 function getForecast() {
-    var apiKey = "f60223f1ece87aa55821b69a70f473df";
+    var apiKey = "99042600fe617d846000c500acac8302";
     var queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`
     $.ajax({
         url: queryUrl,
