@@ -11,7 +11,6 @@ h1 {
 }
 
 .display-4 {
-    font-family: 'Staatliches', cursive;
     font-size: 100px;
 }
 
@@ -20,7 +19,6 @@ h1 {
 }
 
 .container {
-    font-family: 'Rubik', sans-serif;
     font-weight: 300;
 }
 
@@ -52,7 +50,6 @@ h1 {
 }
 
 .city-name {
-    font-family: 'Staatliches', cursive;
     font-size: 60px;
 }
 
@@ -94,7 +91,6 @@ h1 {
 }
 
 .tiny-date {
-    font-family: 'Staatliches', cursive;
     font-size: 22px;
 }
 
