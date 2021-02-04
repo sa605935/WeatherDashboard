@@ -150,6 +150,41 @@ function renderForecast (data) {
     }
 }
 
+function renderUVindex (data) {
+    var currentUV = data.daily[0].uvi;
+    $('#uv-index').text(currentUV);
+    if (currentUV >= 11) {
+        $('#uv-index').removeClass('very-high');
+        $('#uv-index').removeClass('high');
+        $('#uv-index').removeClass('moderate');
+        $('#uv-index').removeClass('low');
+        $('#uv-index').addClass('extreme');
+    } else if (currentUV >= 8 && currentUV < 11) {
+        $('#uv-index').removeClass('extreme');
+        $('#uv-index').removeClass('high');
+        $('#uv-index').removeClass('moderate');
+        $('#uv-index').removeClass('low');
+        $('#uv-index').addClass('very-high');
+    } else if (currentUV >= 6 && currentUV < 8) {
+        $('#uv-index').removeClass('extreme');
+        $('#uv-index').removeClass('very-high');
+        $('#uv-index').removeClass('moderate');
+        $('#uv-index').removeClass('low');
+        $('#uv-index').addClass('high');
+    } else if (currentUV >= 3 && currentUV < 6) {
+        $('#uv-index').removeClass('extreme');
+        $('#uv-index').removeClass('very-high');
+        $('#uv-index').removeClass('high');
+        $('#uv-index').removeClass('low');
+        $('#uv-index').addClass('moderate');
+    } else {
+        $('#uv-index').removeClass('extreme');
+        $('#uv-index').removeClass('very-high');
+        $('#uv-index').removeClass('high');
+        $('#uv-index').removeClass('moderate');
+        $('#uv-index').addClass('low');
+    }
+}
 
 $(document).on("click", ".cityBtn", chooseCity);
 $('.searchBtn').click(retrieveCityInfo);
