@@ -9,10 +9,10 @@ $('#current-date').text(moment().format('dddd, MMMM Do YYYY'));
 
 getCurrentWeather();
 
-function renderCityButtons () {
+function renderCityButtons() {
     $('.city-buttons').empty();
     var dataOptions = '';
-    citiesArray.forEach(function(city) {
+    citiesArray.forEach(function (city) {
         var btnDiv = $('<div>');
         var cityBtn = $('<button>');
         cityBtn.addClass('cityBtn');
@@ -27,7 +27,7 @@ function renderCityButtons () {
     $('#cities').html(dataOptions);
 }
 
-function retrieveCityInfo (event) {
+function retrieveCityInfo(event) {
     event.preventDefault();
     var userCity = $('#city-search-input').val().trim();
     cityName = userCity;
@@ -38,7 +38,14 @@ function retrieveCityInfo (event) {
     getCurrentWeather();
 }
 
-function getCurrentWeather () {
+function chooseCity () {
+    var city = $(this).attr('data-state');
+    cityName = city;
+    localStorage.setItem('city', cityName);
+    getCurrentWeather();
+}
+
+function getCurrentWeather() {
     if (cityName) {
         var apiKey = "96e27da4f61bebe5c6e5c7c18c453252";
         var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
@@ -52,19 +59,19 @@ function getCurrentWeather () {
     }
 }
 
-function getForecast () {
-            var apiKey = "f60223f1ece87aa55821b69a70f473df";
-            var queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`
-            $.ajax({
-                url: queryUrl,
-                method: 'GET',
-            }).then(function (data) {
-                renderForecast(data);
-                renderUVindex(data);
-})
+function getForecast() {
+    var apiKey = "f60223f1ece87aa55821b69a70f473df";
+    var queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`
+    $.ajax({
+        url: queryUrl,
+        method: 'GET',
+    }).then(function (data) {
+        renderForecast(data);
+        renderUVindex(data);
+    })
 }
 
-function renderCurrentWeather (data) {
+function renderCurrentWeather(data) {
     cityLat = data.coord.lat;
     cityLon = data.coord.lon;
     cityName = data.name;
@@ -100,7 +107,7 @@ function renderCurrentWeather (data) {
     getForecast();
 }
 
-function renderForecast (data) {
+function renderForecast(data) {
     $('#bottom-row').empty();
     for (var i = 1; i < 6; i++) {
         var dayDiv = $('<div>');
@@ -119,11 +126,11 @@ function renderForecast (data) {
         if (dayWeather === "Clear") {
             weatherImg.attr('src', './assets/images/sunny.png');
         } else if (dayWeather === "Clouds") {
-            weatherImg.attr('src','./assets/images/cloudy.png');
+            weatherImg.attr('src', './assets/images/cloudy.png');
         } else if (dayWeather === "Rain") {
-            weatherImg.attr('src','./assets/images/rainy.png');
+            weatherImg.attr('src', './assets/images/rainy.png');
         } else if (dayWeather === "Mist") {
-            weatherImg.attr('src','./assets/images/drizzle.png');
+            weatherImg.attr('src', './assets/images/drizzle.png');
         } else if (dayWeather === "Thunderstorm") {
             weatherImg.attr('src', './assets/images/thunderstorm.png');
         } else if (currentWeather === "Snow") {
@@ -150,7 +157,7 @@ function renderForecast (data) {
     }
 }
 
-function renderUVindex (data) {
+function renderUVindex(data) {
     var currentUV = data.daily[0].uvi;
     $('#uv-index').text(currentUV);
     if (currentUV >= 11) {
