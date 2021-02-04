@@ -3,7 +3,7 @@ h1 {
 }
 
 .jumbotron {
-    background-image: url("images/pinkclouds.jpg");
+    background-image: url("assets/images/pinkclouds.jpg");
     background-size: cover;
     color: white;
     padding: 30px;
@@ -48,7 +48,7 @@ h1 {
 }
 
 .cityBtn:hover {
-    background-color: gold;
+    background-color: pink;
 }
 
 .city-name {
@@ -84,7 +84,7 @@ h1 {
 }
 
 .dayBlock {
-    background-color: #7caec9;
+    background-color: pink;
     margin-right: 5px;
     margin-left: 5px;
 }
@@ -116,8 +116,8 @@ h1 {
 #city-info {
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: #003566;
-    color: white;
+    background-color: rgba(126, 109, 121, 0.527);
+    color: black;
 }
 
 #weather-icon {
