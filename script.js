@@ -37,3 +37,65 @@ function retrieveCityInfo (event) {
     renderCityButtons();
     getCurrentWeather();
 }
+
+function getCurrentWeather () {
+    if (cityName) {
+        var apiKey = "96e27da4f61bebe5c6e5c7c18c453252";
+        var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+        $.ajax({
+            url: queryUrl,
+            method: 'GET',
+        }).then(renderCurrentWeather)
+    } else {
+        cityName = 'Houston';
+        getCurrentWeather();
+    }
+}
+
+function getForecast () {
+            var apiKey = "f60223f1ece87aa55821b69a70f473df";
+            var queryUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`
+            $.ajax({
+                url: queryUrl,
+                method: 'GET',
+            }).then(function (data) {
+                renderForecast(data);
+                renderUVindex(data);
+})
+}
+
+function renderCurrentWeather (data) {
+    cityLat = data.coord.lat;
+    cityLon = data.coord.lon;
+    cityName = data.name;
+    var currentWeather = data.weather[0].main;
+    $('.city-name').text(cityName);
+    var temp = Math.ceil(data.main.temp);
+    $('.temp-data').text(`Temperature: ${temp}° F`);
+    var humidity = data.main.humidity;
+    $('.humidity-data').text(`Humidity: ${humidity}%`);
+    var windSpeed = data.wind.speed;
+    $('.wind-data').text(`Wind Speed: ${windSpeed} MPH`);
+    if (currentWeather === "Clear") {
+        if (currentHour < 20 && currentHour > 6) {
+            $('#weather-icon').attr('src', './assets/images/sunny.png');
+        } else {
+            $('#weather-icon').attr('src', './assets/images/moon.png');
+        }
+    } else if (currentWeather === "Clouds") {
+        $('#weather-icon').attr('src', './assets/images/cloudy.png');
+    } else if (currentWeather === "Rain") {
+        $('#weather-icon').attr('src', './assets/images/rainy.png');
+    } else if (currentWeather === "Mist") {
+        $('#weather-icon').attr('src', './assets/images/drizzle.png');
+    } else if (currentWeather === "Thunderstorm") {
+        $('#weather-icon').attr('src', './assets/images/thunderstorm.png');
+    } else if (currentWeather === "Snow") {
+        $('#weather-icon').attr('src', './assets/images/snowy.png');
+    } else if (currentWeather === "Wind") {
+        $('#weather-icon').attr('src', './assets/images/windy.png');
+    } else {
+        $('#weather-icon').attr('src', './assets/images/earth.png');
+    }
+    getForecast();
+}
