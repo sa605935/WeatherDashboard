@@ -171,3 +171,9 @@ h1 {
     }
   }
 
+  function chooseCity () {
+    var city = $(this).attr('data-state');
+    cityName = city;
+    localStorage.setItem('city', cityName);
+    getCurrentWeather();
+}

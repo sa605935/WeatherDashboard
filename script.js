@@ -26,3 +26,14 @@ function renderCityButtons () {
     })
     $('#cities').html(dataOptions);
 }
+
+function retrieveCityInfo (event) {
+    event.preventDefault();
+    var userCity = $('#city-search-input').val().trim();
+    cityName = userCity;
+    localStorage.setItem('city', cityName);
+    citiesArray.push(cityName);
+    $('#city-search-input').val("");
+    renderCityButtons();
+    getCurrentWeather();
+}
